@@ -1,3 +1,27 @@
 .user-info {
   margin-bottom: 50px;
+
+  text-align: center;
+
+  width: 200px;
+
+  &__avatar {
+    width: 100px;
+    height: 100px;
+
+    margin-bottom: 10px;
+  }
+
+  &__description {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__name {
+    font-weight: 700;
+  }
+
+  &__location {
+    color: #7a7a7a;
+  }
 }

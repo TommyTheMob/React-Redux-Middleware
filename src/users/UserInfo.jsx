@@ -1,7 +1,16 @@
 import React from 'react';
 import './userInfo.scss'
+import {connect} from "react-redux";
+import {isFetchingSelector, userDataSelector} from "./users.selectors";
+import Spinner from './Spinner.jsx'
+import PropTypes from "prop-types";
 
-const UserInfo = ( {userData} ) => {
+
+const UserInfo = ({ userData, isFetching }) => {
+    if (isFetching) {
+        return <Spinner />
+    }
+
     if (!userData) {
         return null
     }
@@ -18,4 +27,20 @@ const UserInfo = ( {userData} ) => {
     );
 };
 
-export default UserInfo;
+UserInfo.propTypes = {
+    isFetching: PropTypes.bool.isRequired,
+    userData: PropTypes.shape()
+}
+
+UserInfo.defaultValue = {
+    userData: null
+}
+
+const mapState = (state) => {
+    return {
+        isFetching: isFetchingSelector(state),
+        userData: userDataSelector(state)
+    }
+}
+
+export default connect(mapState)(UserInfo);
