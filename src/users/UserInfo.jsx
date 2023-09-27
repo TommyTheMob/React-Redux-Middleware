@@ -12,7 +12,11 @@ const UserInfo = ({ userData, isFetching }) => {
     }
 
     if (!userData) {
-        return null
+        return (
+            <>
+                <span className="presentation-info">Type here name of user, which data u want to get from Github API (like "facebook", "github", any other user)</span>
+            </>
+        )
     }
 
     const { avatar_url, name, location } = userData

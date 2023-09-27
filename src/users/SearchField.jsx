@@ -3,9 +3,8 @@ import {connect} from "react-redux";
 import * as usersActions from './users.actions'
 import './searchField.scss'
 import PropTypes from "prop-types";
-import {fetchUserData} from "./users.gateway";
 
-const SearchField = ({ showSpinner, userDataReceived }) => {
+const SearchField = ({ getUserData }) => {
     const [inputText, setInputText] = useState('')
 
     const onChange = (event) => {
@@ -13,11 +12,7 @@ const SearchField = ({ showSpinner, userDataReceived }) => {
     }
 
     const handleUserSearch = () => {
-        showSpinner()
-        fetchUserData(inputText)
-            .then(userData => {
-                userDataReceived(userData)
-            })
+        getUserData(inputText)
         setInputText('')
     }
 
@@ -47,13 +42,11 @@ const SearchField = ({ showSpinner, userDataReceived }) => {
 };
 
 SearchField.propTypes = {
-    showSpinner: PropTypes.func.isRequired,
-    userDataReceived: PropTypes.func.isRequired,
+    getUserData: PropTypes.func.isRequired
 }
 
 const mapDispatch = {
-    showSpinner: usersActions.showSpinner,
-    userDataReceived: usersActions.userDataReceived,
+    getUserData: usersActions.getUserData,
 }
 
 export default connect(null, mapDispatch)(SearchField);

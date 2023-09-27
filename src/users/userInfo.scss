@@ -1,24 +1,31 @@
+.presentation-info {
+  margin-bottom: 50px;
+}
+
 .user-info {
   margin-bottom: 50px;
 
   text-align: center;
 
-  width: 200px;
+  width: 350px;
 
   &__avatar {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
 
     margin-bottom: 10px;
+
+    border-radius: 100%;
   }
 
   &__description {
-    display: flex;
-    justify-content: space-between;
+    text-align: center;
   }
 
   &__name {
     font-weight: 700;
+
+    margin-right: 10px;
   }
 
   &__location {
